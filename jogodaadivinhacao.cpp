@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main () {
@@ -29,7 +31,9 @@ int main () {
     }
     
     //Constante para o copilador indentificar que nunca vai mudar o valor no codigo
-    const int NUMERO_SECRETO = 42;
+    srand(time(NULL));
+    const int NUMERO_SECRETO = rand() % 100;
+
     
     //guardando as condicionais com o bool (continua o loop caso a condição é verdadeira)(true)
     bool nao_acertou = true;
