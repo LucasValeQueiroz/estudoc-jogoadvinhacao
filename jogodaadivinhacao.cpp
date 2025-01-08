@@ -7,6 +7,26 @@ int main () {
     cout << "**************************************" << endl;
     cout << "* Bem-vindos ao jogo da adivinhacao! *" << endl;
     cout << "**************************************" << endl;
+
+    cout << "Escolha o seu nivel de dificuldade: "<< endl << endl;
+    cout <<"Facil (F), Medio (M) ou Dificil (D)" << endl;
+
+    char dificuldade;
+    cin >> dificuldade;
+
+    int num_de_tentativas;
+    if(dificuldade == 'F' || dificuldade == 'f'){
+        cout<<"FACIL"<<endl;
+        num_de_tentativas = 15;
+    }
+    else if (dificuldade == 'M' || dificuldade == 'm'){
+        cout<<"MEDIO"<<endl;
+        num_de_tentativas = 10;
+    }
+    else {
+        cout<<"DIFICIL"<<endl;
+        num_de_tentativas = 5;
+    }
     
     //Constante para o copilador indentificar que nunca vai mudar o valor no codigo
     const int NUMERO_SECRETO = 42;
@@ -20,6 +40,7 @@ int main () {
     double diferenca;   
     
     while(nao_acertou){
+        
         tentativas++;
         int chute;
         cout << "Tentativa: " << tentativas << endl;
@@ -35,7 +56,7 @@ int main () {
         bool maior = chute > NUMERO_SECRETO;
         if(acertou){
             int aux;
-            cout << "Parabéns, você acertou!" << endl;
+            cout << "Parabéns,você acertou o número secreto em " << tentativas << " tentativas" << endl;
             cout.precision(2);
             cout << fixed;
             cout << "Você fez " << pontos << " pontos" << endl << "***********************"<< endl << "*QUER JOGAR NOVAMENTE?*"<< endl << "***********************" << endl << endl;
@@ -58,8 +79,12 @@ int main () {
             cout << "O seu chute foi menor que o numero secreto!" << endl;
         }
         
+        if(num_de_tentativas == tentativas){
+            cout << "Você perdeu!" <<endl;
+            nao_acertou = false;
 
+        }
     }
     cout << "Fim de jogo!" << endl;
-    cout << "Você acertou o número secreto em " << tentativas << " tentativas" << endl;
+    
 }
